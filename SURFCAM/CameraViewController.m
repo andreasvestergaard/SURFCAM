@@ -75,7 +75,7 @@
         self.view.autoresizesSubviews = TRUE;
 }
 
-
+//check github
 
 
 - (void) resizePlayerToViewSize
