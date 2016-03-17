@@ -27,7 +27,6 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-//    [self.navigationController prefersStatusBarHidden:YES];
 
 }
 - (IBAction)swipeBack:(id)sender {
@@ -46,6 +45,9 @@
 //    }];
 }
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
 -(void)viewDidAppear:(BOOL)animated {
 }
 
@@ -65,7 +67,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40.; // you can have your own choice, of course
+    return 30.; // you can have your own choice, of course
 }
 
 

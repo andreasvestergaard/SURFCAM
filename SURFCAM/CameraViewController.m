@@ -34,7 +34,7 @@
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     self.imagePicker.mediaTypes =[UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
-    [self presentViewController:self.imagePicker animated:YES completion:nil];
+    [self presentViewController:self.imagePicker animated:NO completion:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -90,7 +90,7 @@
     NSURL *urlForVideo = (NSURL *)[info objectForKey:UIImagePickerControllerMediaURL];
     datastore *sharedDatastore = [datastore sharedDatastore];
     [sharedDatastore.videoURLArray addObject: urlForVideo];
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [picker dismissViewControllerAnimated:NO completion:NULL];
    
     //Thumbnail
     AVAsset *asset = [AVAsset assetWithURL:urlForVideo];
@@ -142,6 +142,10 @@
         feedTablevView *vc = segue.destinationViewController;
         vc.delegate = self;
     }
+}
+
+-(BOOL)prefersStatusBarHidden{
+    return YES;
 }
 
 @end
