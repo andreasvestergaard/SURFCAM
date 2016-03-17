@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "feedTablevView.h"
 #import "datastore.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -15,13 +14,13 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+@protocol feedTablevViewDelegate <NSObject>
 
+- (void) showCamera;
 
+@end
 
-
-
-
-@interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, feedTablevViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *videoView;
 
@@ -29,6 +28,7 @@
 @property (nonatomic,strong) NSURL *videoURL;
 
 -(void)playVideofromURL:(NSURL *)url;
+- (IBAction)camera:(id)sender;
 
 
 @end

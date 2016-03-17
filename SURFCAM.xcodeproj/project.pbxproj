@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D4DECC41C9B062300A000C5 /* backgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4DECC31C9B062300A000C5 /* backgroundImage.png */; };
+		2D4DECC61C9B09AB00A000C5 /* backgroundImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4DECC51C9B09AB00A000C5 /* backgroundImage2.png */; };
 		2DB4F1751C921F5900129A6D /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4F1741C921F5900129A6D /* CameraViewController.m */; };
 		2DB4F1781C92317900129A6D /* datastore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4F1771C92317900129A6D /* datastore.m */; };
 		2DB4F17B1C9311A300129A6D /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4F17A1C9311A300129A6D /* CustomCell.m */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D4DECC31C9B062300A000C5 /* backgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundImage.png; sourceTree = "<group>"; };
+		2D4DECC51C9B09AB00A000C5 /* backgroundImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundImage2.png; sourceTree = "<group>"; };
 		2DB4F1731C921F5900129A6D /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		2DB4F1741C921F5900129A6D /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		2DB4F1761C92317900129A6D /* datastore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = datastore.h; sourceTree = "<group>"; };
@@ -121,8 +125,8 @@
 				2DB4F1791C9311A300129A6D /* CustomCell.h */,
 				2DB4F17A1C9311A300129A6D /* CustomCell.m */,
 				2DFABEB01C8A0E0300995B5D /* Main.storyboard */,
-				2DFABEB31C8A0E0300995B5D /* Assets.xcassets */,
 				2DFABEB51C8A0E0300995B5D /* LaunchScreen.storyboard */,
+				2DFABEB31C8A0E0300995B5D /* Assets.xcassets */,
 				2DFABEB81C8A0E0300995B5D /* Info.plist */,
 				2DFABEA71C8A0E0300995B5D /* Supporting Files */,
 			);
@@ -132,6 +136,8 @@
 		2DFABEA71C8A0E0300995B5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2D4DECC31C9B062300A000C5 /* backgroundImage.png */,
+				2D4DECC51C9B09AB00A000C5 /* backgroundImage2.png */,
 				2DFABEA81C8A0E0300995B5D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -259,6 +265,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DFABEB71C8A0E0300995B5D /* LaunchScreen.storyboard in Resources */,
+				2D4DECC41C9B062300A000C5 /* backgroundImage.png in Resources */,
+				2D4DECC61C9B09AB00A000C5 /* backgroundImage2.png in Resources */,
 				2DFABEB41C8A0E0300995B5D /* Assets.xcassets in Resources */,
 				2DFABEB21C8A0E0300995B5D /* Main.storyboard in Resources */,
 			);

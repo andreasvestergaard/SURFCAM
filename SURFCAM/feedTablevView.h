@@ -10,10 +10,13 @@
 #import "datastore.h"   
 #import "CameraViewController.h"
 
+
 @interface feedTablevView : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic,strong) NSMutableArray *localFeedArray;
 @property (nonatomic,strong) NSMutableArray *localVideoURLArray;
+@property (nonatomic, strong) id <feedTablevViewDelegate> delegate;
+
 
 
 

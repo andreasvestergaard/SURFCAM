@@ -16,6 +16,34 @@
     datastore *sharedDatastore = [datastore sharedDatastore];
     self.localFeedArray = sharedDatastore.feedArray;
     self.localVideoURLArray = sharedDatastore.videoURLArray;
+
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundImage2.png"]];
+    
+    imageView.contentMode = UIViewContentModeCenter;
+    
+    self.tableView.backgroundView = imageView;
+    
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
+    [self.navigationController setNavigationBarHidden:YES];
+    
+//    [self.navigationController prefersStatusBarHidden:YES];
+
+}
+- (IBAction)swipeBack:(id)sender {
+    NSLog(@"swiped");
+    
+    //todo write segue in code in camviewcontroller so it will keep after making new instance
+    
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.delegate showCamera];
+    }];
+//    CameraViewController *newCamSession = [CameraViewController new];
+//    [self presentViewController:newCamSession animated:NO completion:^{
+//   
+//        [newCamSession camera:(id)sender];
+//
+//    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -23,24 +51,28 @@
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return self.localVideoURLArray.count;;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.localVideoURLArray.count;
+    return 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.customImage.image = self.localFeedArray[indexPath.row];
+    cell.customImage.image = self.localFeedArray[indexPath.section];
     return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40.; // you can have your own choice, of course
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSURL *selectedVideoURL = self.localVideoURLArray[indexPath.row];
+        NSURL *selectedVideoURL = self.localVideoURLArray[indexPath.section];
         CameraViewController *newCamVC = [CameraViewController new];
         [self presentViewController:newCamVC animated:NO completion:^{
             [newCamVC playVideofromURL:selectedVideoURL];

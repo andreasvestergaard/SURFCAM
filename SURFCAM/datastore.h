@@ -11,9 +11,7 @@
 @interface datastore : NSObject
 
 @property (nonatomic, strong) NSMutableArray *feedArray;
-
 @property (nonatomic, strong) NSMutableArray *videoURLArray;
-
 
 + (instancetype)sharedDatastore;
 

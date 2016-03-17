@@ -7,7 +7,7 @@
 //
 
 #import "CameraViewController.h"
-
+#import "feedTablevView.h"
 
 @interface CameraViewController ()
 
@@ -18,6 +18,7 @@
 @implementation CameraViewController
 
 - (void)viewDidLoad {
+
 }
 
 - (IBAction)camera:(id)sender {
@@ -101,20 +102,46 @@
     UIImage *image = [UIImage imageWithCGImage:imageRef scale:1.0 orientation:UIImageOrientationRight];
     [sharedDatastore.feedArray addObject: image];
 
-     [self performSegueWithIdentifier:@"feedSugue" sender:nil];
+    //    feedTablevView *newTableView = [feedTablevView new];
+    //    [self presentViewController:newTableView animated:NO completion:nil];
     
-//   [picker dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"feedSugue1" sender:nil];
     
-//    Save image to array:
-//    UIImage *newImage = info[UIImagePickerControllerOriginalImage];
-//    datastore *sharedDatastore = [datastore sharedDatastore];
-//    [sharedDatastore.feedArray addObject: newImage];
-//    [picker dismissViewControllerAnimated:YES completion:NULL];
+    //   [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    //    Save image to array:
+    //    UIImage *newImage = info[UIImagePickerControllerOriginalImage];
+    //    datastore *sharedDatastore = [datastore sharedDatastore];
+    //    [sharedDatastore.feedArray addObject: newImage];
+    //    [picker dismissViewControllerAnimated:YES completion:NULL];
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)showCamera {
+    self.imagePicker = [[UIImagePickerController alloc]init];
+    self.imagePicker.delegate = self;
+    self.imagePicker.allowsEditing = NO;
+    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeMovie];
+    if ([UIImagePickerController isSourceTypeAvailable:(UIImagePickerControllerSourceTypeCamera)]) {
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }else {
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    self.imagePicker.mediaTypes =[UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+    [self presentViewController:self.imagePicker animated:NO completion:nil];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+
+    if ([segue.identifier isEqualToString:@"feedSugue1"]) {
+        
+        feedTablevView *vc = segue.destinationViewController;
+        vc.delegate = self;
+    }
 }
 
 @end
