@@ -17,8 +17,4 @@
 @property (nonatomic,strong) NSMutableArray *localVideoURLArray;
 @property (nonatomic, strong) id <feedTablevViewDelegate> delegate;
 
-
-
-
-
 @end

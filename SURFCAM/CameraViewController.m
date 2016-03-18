@@ -48,12 +48,20 @@
     AVPlayerItem* playerItem = [AVPlayerItem playerItemWithURL:url];
     playerViewController.player = [AVPlayer playerWithPlayerItem:playerItem];
     
+    
     //Setup AVplayer
     playerViewController.showsPlaybackControls = NO;
     self.avPlayerViewcontroller = playerViewController;
     [self resizePlayerToViewSize];
+   
     UIView *contentOverlayView =  [playerViewController contentOverlayView];
+    
+    contentOverlayView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    
+    
     [self.view addSubview:playerViewController.view];
+   
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTap:)];
@@ -78,9 +86,11 @@
 
 
 - (void) resizePlayerToViewSize {
-    CGRect frame = self.view.frame;
-    NSLog(@"frame size %d, %d", (int)frame.size.width, (int)frame.size.height);
+    CGRect frame = self.view.bounds;
     self.avPlayerViewcontroller.view.frame = frame;
+    NSLog(@"frame size %d, %d", (int)frame.size.width, (int)frame.size.height);
+    self.avPlayerViewcontroller.videoGravity = @"AVLayerVideoGravityResizeAspectFill";
+    
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
@@ -117,6 +127,9 @@
 
 }
 
+//insert subview at index
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -132,7 +145,10 @@
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     self.imagePicker.mediaTypes =[UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
-    [self presentViewController:self.imagePicker animated:NO completion:nil];
+    
+    [self presentViewController:self.imagePicker animated:YES completion:nil];
+    
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
