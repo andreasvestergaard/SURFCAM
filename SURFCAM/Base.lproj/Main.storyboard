@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -73,11 +74,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="475.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLw-rL-Cvn">
-                                            <rect key="frame" x="40" y="40" width="295" height="395.5"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLw-rL-Cvn">
+                                            <rect key="frame" x="23" y="23" width="329" height="429.5"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35U-DU-Fgr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="395.5"/>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="35U-DU-Fgr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="329" height="429.5"/>
                                                     <gestureRecognizers/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="Ucs-WX-9Sm" appends="YES" id="7nR-2x-2Xu"/>
@@ -85,8 +86,20 @@
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="35U-DU-Fgr" firstAttribute="centerX" secondItem="ZLw-rL-Cvn" secondAttribute="centerX" id="1QZ-85-gPA"/>
+                                                <constraint firstItem="35U-DU-Fgr" firstAttribute="height" secondItem="ZLw-rL-Cvn" secondAttribute="height" id="drc-nk-PuW"/>
+                                                <constraint firstItem="35U-DU-Fgr" firstAttribute="centerY" secondItem="ZLw-rL-Cvn" secondAttribute="centerY" id="tX3-Ai-9fe"/>
+                                                <constraint firstItem="35U-DU-Fgr" firstAttribute="width" secondItem="ZLw-rL-Cvn" secondAttribute="width" id="z44-U3-IjC"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ZLw-rL-Cvn" secondAttribute="trailing" constant="15" id="8LY-Qg-9Q7"/>
+                                        <constraint firstItem="ZLw-rL-Cvn" firstAttribute="top" secondItem="jtA-KK-BzN" secondAttribute="topMargin" constant="15" id="H4Z-AX-yDX"/>
+                                        <constraint firstItem="ZLw-rL-Cvn" firstAttribute="leading" secondItem="jtA-KK-BzN" secondAttribute="leadingMargin" constant="15" id="HFj-Kh-LCj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ZLw-rL-Cvn" secondAttribute="bottom" constant="15" id="aYT-3Y-oW2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -109,7 +122,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3128.5" y="158.5"/>
+            <point key="canvasLocation" x="3119.5" y="159.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5dW-Ah-czI">
