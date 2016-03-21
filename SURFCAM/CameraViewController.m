@@ -48,18 +48,13 @@
     AVPlayerItem* playerItem = [AVPlayerItem playerItemWithURL:url];
     playerViewController.player = [AVPlayer playerWithPlayerItem:playerItem];
     
-    
     //Setup AVplayer
     playerViewController.showsPlaybackControls = NO;
     self.avPlayerViewcontroller = playerViewController;
     [self resizePlayerToViewSize];
    
     UIView *contentOverlayView =  [playerViewController contentOverlayView];
-    
     contentOverlayView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-    
-    
-    
     [self.view addSubview:playerViewController.view];
    
     UITapGestureRecognizer *singleFingerTap =
@@ -73,24 +68,21 @@
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
-
     NSLog(@"tap in play");
+    
+     [self dismissViewControllerAnimated:NO completion:nil];
     //Do stuff here...
 }
 
-
 -(void)itemDidFinishPlaying:(NSNotification *) notification {
-    
      [self dismissViewControllerAnimated:NO completion:nil];
 }
-
 
 - (void) resizePlayerToViewSize {
     CGRect frame = self.view.bounds;
     self.avPlayerViewcontroller.view.frame = frame;
     NSLog(@"frame size %d, %d", (int)frame.size.width, (int)frame.size.height);
     self.avPlayerViewcontroller.videoGravity = @"AVLayerVideoGravityResizeAspectFill";
-    
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
@@ -110,26 +102,20 @@
     UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     UIImage *image = [UIImage imageWithCGImage:imageRef scale:1.0 orientation:UIImageOrientationRight];
-    [sharedDatastore.feedArray addObject: image];
-
-    //    feedTablevView *newTableView = [feedTablevView new];
-    //    [self presentViewController:newTableView animated:NO completion:nil];
+   
+    [sharedDatastore.feedArray insertObject:image atIndex:0];
     
     [self performSegueWithIdentifier:@"feedSugue1" sender:nil];
     
-    //   [picker dismissViewControllerAnimated:YES completion:nil];
     
     //    Save image to array:
+    
     //    UIImage *newImage = info[UIImagePickerControllerOriginalImage];
     //    datastore *sharedDatastore = [datastore sharedDatastore];
     //    [sharedDatastore.feedArray addObject: newImage];
     //    [picker dismissViewControllerAnimated:YES completion:NULL];
 
 }
-
-//insert subview at index
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -145,16 +131,13 @@
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     self.imagePicker.mediaTypes =[UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
-    
     [self presentViewController:self.imagePicker animated:YES completion:nil];
-    
     
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
     if ([segue.identifier isEqualToString:@"feedSugue1"]) {
-        
         feedTablevView *vc = segue.destinationViewController;
         vc.delegate = self;
     }

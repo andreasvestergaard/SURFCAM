@@ -12,21 +12,20 @@
 
 - (void)awakeFromNib {
     
-//   self.imageView.layer.shadowColor = [UIColor purpleColor].CGColor;
-//    self.customImage.layer.shadowOffset = CGSizeMake(0, 1);
-//    self.customImage.layer.shadowOpacity = 1;
-//    self.customImage.layer.shadowRadius = 1.0;
-//   self.customImage.clipsToBounds = NO;
-// Initialization code
+    self.backgroundColor = [UIColor clearColor];
     
+    self.customImage.layer.cornerRadius = roundf(self.customImage.frame.size.width/15.0);
+    self.customImage.layer.masksToBounds = YES;
     
-    self.customImage.layer.shadowOffset = CGSizeMake(0, 3); //default is (0.0, -3.0)
-    self.customImage.layer.shadowColor = [UIColor blackColor].CGColor; //default is black
-    self.customImage.layer.shadowRadius = 3.0; //default is 3.0
-    self.customImage.layer.shadowOpacity = .5; //default is 0.0
-
+    self.shadowView.layer.cornerRadius = roundf(self.customImage.frame.size.width/15.0);
+    self.shadowView.layer.masksToBounds = NO;
+    self.shadowView.layer.shadowRadius  = 10.f;
+    self.shadowView.layer.shadowColor   = [UIColor blackColor].CGColor;
+    self.shadowView.layer.shadowOffset  = CGSizeMake(0.f, 5.f);
+    self.shadowView.layer.shadowOpacity = 1.f;
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRoundedRect:self.customImage.bounds cornerRadius:roundf(self.customImage.frame.size.width/15.0)];
     
-    
+    self.shadowView.layer.shadowPath = shadowPath.CGPath;
     
 }
 
