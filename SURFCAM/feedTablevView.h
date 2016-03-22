@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSMutableArray *localFeedArray;
 @property (nonatomic,strong) NSMutableArray *localVideoURLArray;
 @property (nonatomic,strong) NSMutableArray *localLocationArray;
+@property (nonatomic,strong) CLLocation *currentLocation;
 @property (nonatomic, strong) id <feedTablevViewDelegate> delegate;
 
 @end

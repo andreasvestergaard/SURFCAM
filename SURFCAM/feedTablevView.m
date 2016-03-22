@@ -8,9 +8,8 @@
 
 #import "feedTablevView.h"
 #import "CustomCell.h"
-#
-
 @implementation feedTablevView
+
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -21,8 +20,11 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundImage2.png"]];
     imageView.contentMode = UIViewContentModeCenter;
     self.tableView.backgroundView = imageView;
-//    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-//    [self.navigationController setNavigationBarHidden:YES];
+    
+    LocationViewController *sharedLocationVC =[LocationViewController sharedSingleton];
+    
+    self.currentLocation = sharedLocationVC.location;
+
 }
 
 
@@ -58,13 +60,23 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
     cell.customImage.image = self.localFeedArray[indexPath.section];
-    
     CLLocation *location = self.localLocationArray[indexPath.section];
+    cell.locationLabel.text = [self timeStampStringFromLocation:location];
     
+    CLLocationDistance distance = [location distanceFromLocation:self.currentLocation];
+  
+    NSString *LongDist = [NSString stringWithFormat:@"%f", distance];
+    NSString *shortDist = [LongDist substringToIndex:4];
+
+    cell.distanceLabel.text = [NSString stringWithFormat:@"Distance: %@km", shortDist];
+    
+    return cell;
+}
+
+-(NSString *)timeStampStringFromLocation: (CLLocation*)location{
+
     NSTimeInterval timeSincePhoto = location.timestamp.timeIntervalSinceNow;
-    
     NSInteger totalSeconds = (NSInteger)timeSincePhoto;
     
     NSInteger hours = totalSeconds/ 3600;
@@ -73,24 +85,18 @@
     NSString *timeLAbel = [NSString stringWithFormat:@"%02li:%02li:%02li",hours, minutes, seconds] ;
     
     NSString *strNew = [timeLAbel stringByReplacingOccurrencesOfString:@"-" withString:@""];
-
-
+    
     if (hours > -1 && minutes > -1) {
         strNew = [NSString stringWithFormat:@"%02lisec ago", seconds];
-    } else if(hours > -1) {
-        strNew = [NSString stringWithFormat:@"%02limin ago", minutes];}
-    else {
+    } else if (hours > -1) {
+        strNew = [NSString stringWithFormat:@"%02limin ago", minutes];
+    } else {
         strNew = [NSString stringWithFormat:@"%02lihours ago", hours];
     }
     
+    NSString *timeString = [strNew stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
-    
-    
-    cell.locationLabel.text = strNew;
-    
-    //[NSString stringWithFormat:@"%f",location.timestamp.timeIntervalSinceNow];
-   
-    return cell;
+    return timeString;
 }
 
 
