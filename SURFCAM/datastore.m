@@ -26,6 +26,8 @@
     if (self) {
         _feedArray = [[NSMutableArray alloc] init];
         _videoURLArray = [[NSMutableArray alloc]init];
+        _locationArray = [[NSMutableArray alloc]init];
+
     }
     return self;
 }

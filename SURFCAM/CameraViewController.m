@@ -8,6 +8,7 @@
 
 #import "CameraViewController.h"
 #import "feedTablevView.h"
+#import "LocationViewController.h"
 
 @interface CameraViewController ()
 
@@ -18,7 +19,17 @@
 @implementation CameraViewController
 
 - (void)viewDidLoad {
+    LocationViewController *sharedLocationVC =[LocationViewController sharedSingleton];
+    NSLog(@"location viewDidLoad im camVC:%@", sharedLocationVC.location);
+}
 
+
+- (IBAction)updateLocation:(id)sender {
+    LocationViewController *sharedLocationVC =[LocationViewController sharedSingleton];
+    
+    //get location when it is updated (locationDidUpdate finishes)
+    
+    NSLog(@"location in camVC:%@", sharedLocationVC.location);
 }
 
 - (IBAction)camera:(id)sender {
@@ -85,16 +96,17 @@
     self.avPlayerViewcontroller.videoGravity = @"AVLayerVideoGravityResizeAspectFill";
 }
 
+
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
     //Get URL and save to array:
     self.videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
     NSURL *urlForVideo = (NSURL *)[info objectForKey:UIImagePickerControllerMediaURL];
     datastore *sharedDatastore = [datastore sharedDatastore];
-    [sharedDatastore.videoURLArray addObject: urlForVideo];
+    [sharedDatastore.videoURLArray insertObject:urlForVideo atIndex:0];
     [picker dismissViewControllerAnimated:NO completion:NULL];
    
-    //Thumbnail
+    //Generate Thumbnail and save to array
     AVAsset *asset = [AVAsset assetWithURL:urlForVideo];
     AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
     CMTime time = CMTimeMake(1, 1);
@@ -104,6 +116,14 @@
     UIImage *image = [UIImage imageWithCGImage:imageRef scale:1.0 orientation:UIImageOrientationRight];
    
     [sharedDatastore.feedArray insertObject:image atIndex:0];
+    
+    //Get location and to array
+    
+    LocationViewController *sharedLocationVC =[LocationViewController sharedSingleton];
+    
+    CLLocation *locationAtSaveVideo = sharedLocationVC.location;
+
+    [sharedDatastore.locationArray insertObject:locationAtSaveVideo atIndex:0];
     
     [self performSegueWithIdentifier:@"feedSugue1" sender:nil];
     

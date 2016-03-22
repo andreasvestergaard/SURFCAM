@@ -12,6 +12,7 @@
 		2DB4F1751C921F5900129A6D /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4F1741C921F5900129A6D /* CameraViewController.m */; };
 		2DB4F1781C92317900129A6D /* datastore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4F1771C92317900129A6D /* datastore.m */; };
 		2DB4F17B1C9311A300129A6D /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4F17A1C9311A300129A6D /* CustomCell.m */; };
+		2DD521141CA09B6500846472 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD521131CA09B6500846472 /* LocationViewController.m */; };
 		2DFABEA91C8A0E0300995B5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFABEA81C8A0E0300995B5D /* main.m */; };
 		2DFABEAC1C8A0E0300995B5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFABEAB1C8A0E0300995B5D /* AppDelegate.m */; };
 		2DFABEB21C8A0E0300995B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DFABEB01C8A0E0300995B5D /* Main.storyboard */; };
@@ -48,6 +49,8 @@
 		2DB4F1771C92317900129A6D /* datastore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = datastore.m; sourceTree = "<group>"; };
 		2DB4F1791C9311A300129A6D /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		2DB4F17A1C9311A300129A6D /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		2DD521121CA09B6500846472 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		2DD521131CA09B6500846472 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		2DFABEA41C8A0E0300995B5D /* SURFCAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SURFCAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DFABEA81C8A0E0300995B5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DFABEAA1C8A0E0300995B5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				2DB4F1771C92317900129A6D /* datastore.m */,
 				2DB4F1791C9311A300129A6D /* CustomCell.h */,
 				2DB4F17A1C9311A300129A6D /* CustomCell.m */,
+				2DD521121CA09B6500846472 /* LocationViewController.h */,
+				2DD521131CA09B6500846472 /* LocationViewController.m */,
 				2DFABEB01C8A0E0300995B5D /* Main.storyboard */,
 				2DFABEB51C8A0E0300995B5D /* LaunchScreen.storyboard */,
 				2DFABEB31C8A0E0300995B5D /* Assets.xcassets */,
@@ -295,6 +300,7 @@
 			files = (
 				2DB4F1781C92317900129A6D /* datastore.m in Sources */,
 				2DB4F1751C921F5900129A6D /* CameraViewController.m in Sources */,
+				2DD521141CA09B6500846472 /* LocationViewController.m in Sources */,
 				2DB4F17B1C9311A300129A6D /* CustomCell.m in Sources */,
 				2DFABEE51C8A108500995B5D /* feedTablevView.m in Sources */,
 				2DFABEAC1C8A0E0300995B5D /* AppDelegate.m in Sources */,

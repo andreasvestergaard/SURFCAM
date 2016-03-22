@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSMutableArray *feedArray;
 @property (nonatomic, strong) NSMutableArray *videoURLArray;
+@property (nonatomic, strong) NSMutableArray *locationArray;
+
 
 + (instancetype)sharedDatastore;
 
