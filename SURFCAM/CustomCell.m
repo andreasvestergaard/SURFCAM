@@ -14,10 +14,10 @@
     
     self.backgroundColor = [UIColor clearColor];
   
-  //  self.customImage.layer.cornerRadius = roundf(self.customImage.frame.size.width/15.0);
+    //  self.customImage.layer.cornerRadius = roundf(self.customImage.frame.size.width/15.0);
     self.customImage.layer.masksToBounds = YES;
     
-   // self.shadowView.layer.cornerRadius = roundf(self.customImage.frame.size.width/15.0);
+    // self.shadowView.layer.cornerRadius = roundf(self.customImage.frame.size.width/15.0);
     self.shadowView.layer.masksToBounds = NO;
     self.shadowView.layer.shadowRadius  = 10.f;
     self.shadowView.layer.shadowColor   = [UIColor blackColor].CGColor;

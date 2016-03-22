@@ -8,6 +8,7 @@
 
 #import "feedTablevView.h"
 #import "CustomCell.h"
+#
 
 @implementation feedTablevView
 
@@ -16,6 +17,7 @@
     datastore *sharedDatastore = [datastore sharedDatastore];
     self.localFeedArray = sharedDatastore.feedArray;
     self.localVideoURLArray = sharedDatastore.videoURLArray;
+    self.localLocationArray = sharedDatastore.locationArray;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundImage2.png"]];
     imageView.contentMode = UIViewContentModeCenter;
     self.tableView.backgroundView = imageView;
@@ -51,8 +53,13 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
     cell.customImage.image = self.localFeedArray[indexPath.section];
     
+    CLLocation *location = self.localLocationArray[indexPath.section];
+
+    cell.locationLabel.text = [NSString stringWithFormat:@"%f",location.coordinate.latitude];
+   
     return cell;
 }
 
