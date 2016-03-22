@@ -38,7 +38,6 @@
     
 }
 
-
 + (LocationViewController *)sharedSingleton {
     static LocationViewController* sharedSingleton;
     if(!sharedSingleton) {
@@ -52,10 +51,11 @@
                       
                       
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    NSLog(@"%f", self.locationManager.location.coordinate.latitude);
-    NSLog(@"%f", self.locationManager.location.coordinate.longitude);
     
     self.location = self.locationManager.location;
+    
+    NSLog(@"property: %@", self.location);
+    NSLog(@"locationmgr: %@", self.locationManager.location);
     
     [self.locationManager stopUpdatingLocation];
 }

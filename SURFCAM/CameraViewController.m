@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     LocationViewController *sharedLocationVC =[LocationViewController sharedSingleton];
     NSLog(@"location viewDidLoad im camVC:%@", sharedLocationVC.location);
+    
 }
 
 
@@ -34,6 +35,14 @@
 
 - (IBAction)camera:(id)sender {
     // UIIMAGEPICKER Capture video
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        LocationViewController *sharedLocationVC =[LocationViewController sharedSingleton];
+        [sharedLocationVC.locationManager startUpdatingLocation];
+    }];
+
+   
+
     
     self.imagePicker = [[UIImagePickerController alloc]init];
     self.imagePicker.delegate = self;

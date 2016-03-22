@@ -29,6 +29,11 @@
 - (IBAction)swipeBack:(id)sender {
     NSLog(@"swiped");
     
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        LocationViewController *sharedLocationVC =[LocationViewController sharedSingleton];
+        [sharedLocationVC.locationManager startUpdatingLocation];
+    }];
+    
     [self dismissViewControllerAnimated:NO completion:^{
         [self.delegate showCamera];
     }];
@@ -57,8 +62,33 @@
     cell.customImage.image = self.localFeedArray[indexPath.section];
     
     CLLocation *location = self.localLocationArray[indexPath.section];
+    
+    NSTimeInterval timeSincePhoto = location.timestamp.timeIntervalSinceNow;
+    
+    NSInteger totalSeconds = (NSInteger)timeSincePhoto;
+    
+    NSInteger hours = totalSeconds/ 3600;
+    NSInteger minutes = (totalSeconds % 3600) / 60;
+    NSInteger seconds = (totalSeconds % 3600) % 60;
+    NSString *timeLAbel = [NSString stringWithFormat:@"%02li:%02li:%02li",hours, minutes, seconds] ;
+    
+    NSString *strNew = [timeLAbel stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
-    cell.locationLabel.text = [NSString stringWithFormat:@"%f",location.coordinate.latitude];
+
+    if (hours > -1 && minutes > -1) {
+        strNew = [NSString stringWithFormat:@"%02lisec ago", seconds];
+    } else if(hours > -1) {
+        strNew = [NSString stringWithFormat:@"%02limin ago", minutes];}
+    else {
+        strNew = [NSString stringWithFormat:@"%02lihours ago", hours];
+    }
+    
+
+    
+    
+    cell.locationLabel.text = strNew;
+    
+    //[NSString stringWithFormat:@"%f",location.timestamp.timeIntervalSinceNow];
    
     return cell;
 }
