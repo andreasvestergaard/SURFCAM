@@ -61,10 +61,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.customImage.image = self.localFeedArray[indexPath.section];
+   
     CLLocation *location = self.localLocationArray[indexPath.section];
     cell.locationLabel.text = [self timeStampStringFromLocation:location];
     
-    CLLocationDistance distance = [location distanceFromLocation:self.currentLocation];
+    CLLocationDistance distance = [location distanceFromLocation:self.currentLocation]/1000;
   
     NSString *LongDist = [NSString stringWithFormat:@"%f", distance];
     NSString *shortDist = [LongDist substringToIndex:4];
